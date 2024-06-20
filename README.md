@@ -8,37 +8,6 @@ Bu proje, kullanıcıların kayıt olabileceği, giriş yapabileceği, blog yaz�
 - **Frontend**: Next.js
 - **Diğer**: JWT (kimlik doğrulama), Multer (dosya yükleme)
 
-## Proje Yapısı
-blog_project/
-│
-├── controllers/
-│ ├── blogController.js
-│ ├── categoryController.js
-│ ├── tagController.js
-│ └── userController.js
-│
-├── middleware/
-│ └── upload.js
-│
-├── models/
-│ ├── blogModel.js
-│ ├── categoryModel.js
-│ ├── tagModel.js
-│ └── userModel.js
-│
-├── routes/
-│ ├── blogRoutes.js
-│ ├── categoryRoutes.js
-│ ├── tagRoutes.js
-│ └── userRoutes.js
-│
-├── config/
-│ └── db.js
-│
-├── .env
-├── package.json
-└── server.js
-
 ## Özellikler
 
 ### Kullanıcı İşlemleri
