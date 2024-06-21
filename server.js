@@ -1,12 +1,14 @@
-import express from 'express';
 import dotenv from 'dotenv';
+import express from 'express';
 import userRoutes from './routes/userRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
+import categoryRoutes from './routes/categoryRoutes.js';
+import tagRoutes from './routes/tagRoutes.js';
 
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 app.use(express.json());
 
