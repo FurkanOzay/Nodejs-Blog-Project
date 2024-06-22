@@ -1,7 +1,8 @@
 import { createBlogPost, getBlogPostById, getAllBlogPosts } from '../models/blogModel.js';
+import { createTag, getTagByName, addTagToBlogPost } from '../models/tagModel.js';
 
 export const addBlogPost = async (req, res) => {
-    const { title, content, authorId, categoryId } = req.body;
+    const { title, content, authorId, categoryId, tags } = req.body;
     let imagePath = null;
     if (req.file) {
         imagePath = req.file.path;
@@ -9,6 +10,16 @@ export const addBlogPost = async (req, res) => {
     try {
         console.log('Adding blog post:', { title, content, authorId, categoryId, imagePath });
         const blogPostId = await createBlogPost({ title, content, authorId, categoryId, imagePath });
+
+        // Etiketleri işleme
+        for (const tag of tags) {
+            let tagRecord = await getTagByName(tag);
+            if (!tagRecord) {
+                tagRecord = await createTag(tag);
+            }
+            await addTagToBlogPost(blogPostId, tagRecord.id);
+        }
+
         res.status(201).json({ message: 'Blog post created successfully', blogPostId });
     } catch (error) {
         console.error('Error creating blog post:', error);
